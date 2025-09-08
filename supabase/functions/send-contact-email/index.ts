@@ -4,7 +4,7 @@ import { Resend } from "npm:resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-const supabaseKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -45,11 +45,16 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Get client info
-    const clientIP = req.headers.get("cf-connecting-ip") || 
-                    req.headers.get("x-forwarded-for") || 
-                    req.headers.get("x-real-ip") || 
-                    "unknown";
+    // Get client info (parse comma-separated X-Forwarded-For and fallback gracefully)
+    const forwardedFor = req.headers.get("x-forwarded-for") || "";
+    const firstForwardedIp = forwardedFor.split(",")[0]?.trim();
+    const ipRaw =
+      req.headers.get("cf-connecting-ip") ||
+      firstForwardedIp ||
+      req.headers.get("x-real-ip") ||
+      null;
+    // If no valid IP present, store null (inet column cannot accept arbitrary strings)
+    const clientIP = ipRaw && ipRaw.length > 0 ? ipRaw : null;
     const userAgent = req.headers.get("user-agent") || "unknown";
 
     // Save to database
@@ -132,11 +137,14 @@ const handler = async (req: Request): Promise<Response> => {
     );
 
   } catch (error: any) {
-    console.error("Error in send-contact-email function:", error);
+    console.error("Error in send-contact-email function:", {
+      message: error?.message,
+      stack: error?.stack,
+    });
     return new Response(
       JSON.stringify({ 
         error: "Internal server error. Please try again later.",
-        details: error.message 
+        details: error?.message || "Unknown error" 
       }),
       {
         status: 500,
