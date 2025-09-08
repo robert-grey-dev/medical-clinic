@@ -76,6 +76,9 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Send notification email to admin
+    const fromEmail = Deno.env.get("RESEND_FROM_EMAIL") || "Medical Clinic <onboarding@resend.dev>";
+    const adminEmail = Deno.env.get("ADMIN_EMAIL") || "admin@medical-clinic.com";
+    
     const adminEmailContent = `
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${name}</p>
@@ -88,8 +91,8 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     await resend.emails.send({
-      from: "Medical Clinic <onboarding@resend.dev>",
-      to: ["admin@medical-clinic.com"], // Replace with actual admin email
+      from: fromEmail,
+      to: [adminEmail],
       subject: "New Contact Form Submission",
       html: adminEmailContent,
     });
@@ -107,7 +110,7 @@ const handler = async (req: Request): Promise<Response> => {
       `;
 
       await resend.emails.send({
-        from: "Medical Clinic <onboarding@resend.dev>",
+        from: fromEmail,
         to: [email],
         subject: "We received your message - Medical Clinic",
         html: clientEmailContent,
