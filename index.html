@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href="https://yoursite.com/" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    
+    <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+    <!-- Load critical font early -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+    
+    <!-- SEO Meta Tags -->
+    <title>MediCal Clinic - Premier Medical Center | Expert Healthcare in the US</title>
+    <meta name="description" content="MediCal Clinic offers exceptional medical care with board-certified specialists, advanced diagnostics, and personalized treatment. Schedule your appointment online today in the United States." />
+    <meta name="author" content="MediCal Clinic" />
+    <meta name="keywords" content="medical clinic USA, healthcare providers, board certified doctors, medical specialists, diagnostic services, patient care, appointment booking, internal medicine, cardiology, orthopedics, preventive care" />
+    <meta name="geo.region" content="US" />
+    <meta name="geo.country" content="USA" />
+    <meta name="language" content="en-US" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yoursite.com/" />
+    <meta property="og:title" content="MediCal Clinic - Premier Medical Center | Expert Healthcare" />
+    <meta property="og:description" content="Exceptional medical care with board-certified specialists, advanced diagnostics, and personalized treatment. Your health is our priority." />
+    <meta property="og:image" content="https://yoursite.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="MediCal Clinic" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://yoursite.com/" />
+    <meta name="twitter:title" content="MediCal Clinic - Premier Medical Center | Expert Healthcare" />
+    <meta name="twitter:description" content="Exceptional medical care with board-certified specialists, advanced diagnostics, and personalized treatment." />
+    <meta name="twitter:image" content="https://yoursite.com/og-image.jpg" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- JSON-LD Schema for Medical Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "MediCal Clinic",
+      "description": "Premier medical center offering exceptional healthcare services with board-certified specialists and advanced medical technology.",
+      "url": "https://yoursite.com",
+      "logo": "https://yoursite.com/logo.png",
+      "image": "https://yoursite.com/clinic-image.jpg",
+      "telephone": "+1-555-123-4567",
+      "email": "info@medicalclinic.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Medical Center Drive",
+        "addressLocality": "Healthcare City",
+        "addressRegion": "CA",
+        "postalCode": "90210",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "34.0522",
+        "longitude": "-118.2437"
+      },
+      "openingHours": [
+        "Mo-Fr 08:00-18:00",
+        "Sa 09:00-15:00"
+      ],
+      "medicalSpecialty": [
+        "Internal Medicine",
+        "Cardiology",
+        "Orthopedics",
+        "Ophthalmology",
+        "Neurology",
+        "Preventive Care"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Medical Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "General Consultation",
+              "description": "Comprehensive medical examination and consultation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalTest",
+              "name": "Diagnostic Services",
+              "description": "Advanced diagnostic testing and imaging services"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "247",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://www.facebook.com/medicalclinic",
+        "https://www.linkedin.com/company/medicalclinic",
+        "https://twitter.com/medicalclinic"
+      ]
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
